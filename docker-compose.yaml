@@ -1,0 +1,33 @@
+version: '3.8'
+
+services:
+  web_app:
+    image: docker-registry.is-tech.vn/<Image_name>:<version>
+    container_name: web_app
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "80:8000"    # Ứng dụng chính truy cập qua cổng 80
+      - "81:8080"    # API truy cập qua cổng 81
+    environment:
+      - PYTHONDONTWRITEBYTECODE=1
+      - PYTHONUNBUFFERED=1
+    volumes:
+      - ./iThunderCloud/Graduate:/code  # Thư mục chứa mã nguồn và cấu hình Docker
+    command: ["supervisord", "-n"]
+
+  db:
+    image: postgres:13
+    container_name: database
+    environment:
+      POSTGRES_USER: student
+      POSTGRES_PASSWORD: fitlab
+      POSTGRES_DB: fitlab_db
+    ports:
+      - "5432:5432"  # Nếu cần sử dụng PostgreSQL
+    volumes:
+      - db_data:/var/lib/postgresql/data
+
+volumes:
+  db_data:
