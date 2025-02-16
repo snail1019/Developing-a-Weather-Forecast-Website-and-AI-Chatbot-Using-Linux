@@ -6,7 +6,7 @@ GROQ_API_KEY = os.getenv("GROQ_API_KEY")
 # Load the environment variables
 load_dotenv("chatbot/.env")
 
-API_KEY = "d94af54db46f43deb88151507240211"
+API_KEY = "" #your key
 BASE_URL = "http://api.weatherapi.com/v1"
 
 def get_weather(city):
