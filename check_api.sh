@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Định nghĩa biến cho API key và URL
-API_KEY="628810f2e4dd4c8686e101108242910"  
+API_KEY=""  #your key 
 BASE_URL="http://api.weatherapi.com/v1"  
 
 # Lấy tên thành phố từ tham số truyền vào script
